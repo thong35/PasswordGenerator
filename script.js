@@ -15,6 +15,11 @@ function generatePassword() {
   }
 
   document.getElementById("output").value = password;
+
+  // Save to localStorage for sync
+  const passwords = JSON.parse(localStorage.getItem("passwords")) || [];
+  passwords.push({ account: "Generated", password, tag: "New" });
+  localStorage.setItem("passwords", JSON.stringify(passwords));
 }
 
 function copyPassword() {
